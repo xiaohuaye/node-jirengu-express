@@ -19,27 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', log1());
-app.post('/users', log2);
-app.use('/users/log3', log3);
-
-
-function log1(){
-  return function (req, res, next) {
-    console.log(11)
-    next()
-  }
-}
-
-function log2(req, res, next){
-  console.log(2)
-  next()
-}
-
-function log3(req, res, next){
-  console.log(3)
-  res.send('sss')
-}
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
