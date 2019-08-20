@@ -1,15 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const NoSign = require('../views/nosign.ejs')
-/* GET home page. */
+const User = require('../models/model_user.js');
+
 router.use('/', function(req, res, next) {
-  if(req.params.name !== 'Xiaohuaye'){
+  if(req.query.name !== 'Xiaohuaye'){
     res.locals.message = "sorry,I don't remember you"
-    let ele = NoSign
-    res.locals.nosign = ele
     res.render('nosign')
+  }else{
+   if(req.query.password === '888'){
+     res.locals.title = "express"
+     res.render('index')
+   }else{
+     res.render('sign')
+   }
   }
-  next()
 });
 
 module.exports = router;
