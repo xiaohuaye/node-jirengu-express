@@ -1,19 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/model_user.js');
+var express = require('express');
+var router = express.Router();
 
-router.use('/', function(req, res, next) {
-  if(req.query.name !== 'Xiaohuaye'){
-    res.locals.message = "sorry,I don't remember you"
-    res.render('nosign')
-  }else{
-   if(req.query.password === '888'){
-     res.locals.title = "express"
-     res.render('index')
-   }else{
-     res.render('sign')
-   }
-  }
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Hello' });
 });
 
 module.exports = router;
