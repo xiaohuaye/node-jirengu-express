@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const errorHandle = require('./middlewares/http_error_handler')
 
-
 require('./services/mongoose_connect.js')
 require('ejs')
 
